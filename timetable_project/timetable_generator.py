@@ -35,35 +35,35 @@ room_availabilities = cursor.fetchall()
 # Step 3: Organize Data into a Timetable
 timetable = []
 days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"]
-time_slots = ["08:00-10:00", "10:00-12:00", "14:00-16:00", "16:00-18:00"]
+time_slots = ["08:30-10:30", "10:30-12:30", "14:30-16:30", "16:30-18:30"]
 
 # Step 4: Function to Check Professor Availability
 def is_professor_available(professor_id, day, time_slot):
-    matin = "matin" if "08:00" <= time_slot <= "12:00" else None
-    apres_midi = "apres_midi" if "14:00" <= time_slot <= "18:00" else None
-    
-    print(f"Checking availability for professor {professor_id} on {day} {time_slot}")
-    
+    matin = 1 if "08:30" <= time_slot <= "12:30" else 0
+    apres_midi = 1 if "14:30" <= time_slot <= "18:30" else 0
+
     cursor.execute(""" 
         SELECT * FROM disponibilite_profs 
-        WHERE id_prof = %s AND jour = %s AND (%s = 'matin' OR %s = 'apres_midi') 
+        WHERE id_prof = %s AND jour = %s AND (matin = %s OR apres_midi = %s)
     """, (professor_id, day, matin, apres_midi))
-    
+
     result = cursor.fetchone()
-    print(f"Query result: {result}")
     return result is not None
+
 
 # Step 5: Function to Check Room Availability
 def is_room_available(room_id, day, time_slot):
-    time_period = 'matin' if "08:00" <= time_slot <= "12:00" else 'apres_midi'
+    matin = 1 if "08:30" <= time_slot <= "12:30" else 0
+    apres_midi = 1 if "14:30" <= time_slot <= "18:30" else 0
 
     cursor.execute("""
         SELECT * FROM salle_dispos
-        WHERE jour = %s AND TypeSalle = %s AND (%s = 'matin' OR %s = 'apres_midi')
-    """, (day, room_id, time_period, time_period))
+        WHERE numero = %s AND jour = %s AND (matin = %s OR apres_midi = %s)
+    """, (room_id, day, matin, apres_midi))
 
     room_availability = cursor.fetchone()
     return room_availability is not None
+
 
 # Step 6: Assign Timetable Entries
 for assign in assignments:
@@ -76,26 +76,27 @@ for assign in assignments:
 
     # Step 7: If Professor and Module Exist, Assign Timeslot, Day, and Room
     if professor and module:
-        day = random.choice(days)
-        time_slot = random.choice(time_slots)
-
-        # Check if professor is available
-        if is_professor_available(professor_id, day, time_slot):
-            available_rooms = [room for room in rooms if room["TypeSalle"] in [r["TypeSalle"] for r in room_availabilities if r["jour"] == day and r["TypeSalle"] == room["TypeSalle"]]]
-
-            if available_rooms:
-                room = random.choice(available_rooms)
-                room_id = room["id"]
-
-                if is_room_available(room_id, day, time_slot):
-                    timetable.append({
-                        "professor": professor["nom"],
-                        "module": module["intitule_module"],
-                        "group": group_id,
-                        "day": day,
-                        "time": time_slot,
-                        "room": room["TypeSalle"]
-                    })
+        assigned = False
+        for day in days:
+            for time_slot in time_slots:
+                # Check if professor is available
+                if is_professor_available(professor_id, day, time_slot):
+                    # Find available rooms
+                    available_rooms = [room for room in rooms if is_room_available(room["id"], day, time_slot)]
+                    if available_rooms:
+                        room = random.choice(available_rooms)
+                        timetable.append({
+                            "professor": professor["nom"],
+                            "module": module["intitule_module"],
+                            "group": group_id,
+                            "day": day,
+                            "time": time_slot,
+                            "room": room["TypeSalle"]
+                        })
+                        assigned = True
+                        break
+            if assigned:
+                break
 
 # Step 8: Save Timetable as JSON
 with open("timetable.json", "w", encoding="utf-8") as json_file:

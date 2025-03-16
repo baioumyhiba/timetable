@@ -1,1 +1,130 @@
-[]
+[
+    {
+        "professor": "Baioumy",
+        "module": "Systèmes d’exploitation",
+        "group": 1,
+        "day": "Lundi",
+        "time": "08:30-10:30",
+        "room": "Salle TP"
+    },
+    {
+        "professor": "Aouaj",
+        "module": "Analyse numérique",
+        "group": 3,
+        "day": "Mercredi",
+        "time": "08:30-10:30",
+        "room": "Mini-Amphi"
+    },
+    {
+        "professor": "Maarouf",
+        "module": "Réseaux informatiques",
+        "group": 3,
+        "day": "Lundi",
+        "time": "08:30-10:30",
+        "room": "Salle TP"
+    },
+    {
+        "professor": "Maarouf",
+        "module": "Réseaux informatiques",
+        "group": 1,
+        "day": "Lundi",
+        "time": "08:30-10:30",
+        "room": "Salle TP"
+    },
+    {
+        "professor": "Maarouf",
+        "module": "Analyse numérique",
+        "group": 1,
+        "day": "Lundi",
+        "time": "08:30-10:30",
+        "room": "Salle TP"
+    },
+    {
+        "professor": "hourri",
+        "module": "Administration Réseau",
+        "group": 2,
+        "day": "Lundi",
+        "time": "08:30-10:30",
+        "room": "Amphi"
+    },
+    {
+        "professor": "hourri",
+        "module": "Administration Réseau",
+        "group": 3,
+        "day": "Lundi",
+        "time": "08:30-10:30",
+        "room": "Amphi"
+    },
+    {
+        "professor": "hourri",
+        "module": "Administration Réseau",
+        "group": 3,
+        "day": "Lundi",
+        "time": "08:30-10:30",
+        "room": "Amphi"
+    },
+    {
+        "professor": "hourri",
+        "module": "Administration Réseau",
+        "group": 1,
+        "day": "Lundi",
+        "time": "08:30-10:30",
+        "room": "Amphi"
+    },
+    {
+        "professor": "hourri",
+        "module": "Développement web",
+        "group": 1,
+        "day": "Lundi",
+        "time": "08:30-10:30",
+        "room": "Salle TP"
+    },
+    {
+        "professor": "hourri",
+        "module": "Développement web",
+        "group": 2,
+        "day": "Lundi",
+        "time": "08:30-10:30",
+        "room": "Salle TP"
+    },
+    {
+        "professor": "hourri",
+        "module": "Développement web",
+        "group": 3,
+        "day": "Lundi",
+        "time": "08:30-10:30",
+        "room": "Salle TP"
+    },
+    {
+        "professor": "hourri",
+        "module": "Développement web",
+        "group": 1,
+        "day": "Lundi",
+        "time": "08:30-10:30",
+        "room": "Amphi"
+    },
+    {
+        "professor": "hourri",
+        "module": "Développement web",
+        "group": 2,
+        "day": "Lundi",
+        "time": "08:30-10:30",
+        "room": "Amphi"
+    },
+    {
+        "professor": "hourri",
+        "module": "Développement web",
+        "group": 3,
+        "day": "Lundi",
+        "time": "08:30-10:30",
+        "room": "Amphi"
+    },
+    {
+        "professor": "hourri",
+        "module": "Développement web",
+        "group": 1,
+        "day": "Lundi",
+        "time": "08:30-10:30",
+        "room": "Salle TP"
+    }
+]
