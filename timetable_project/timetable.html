@@ -5,183 +5,597 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Timetable Display</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h2 {
+            margin: 5px 0;
+            color: #333;
+        }
+        .header h3 {
+            margin: 5px 0;
+            font-size: 14px;
+            font-weight: normal;
+        }
+        .filters {
+            margin-bottom: 20px;
+        }
+        select, button {
+            padding: 8px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
+            table-layout: fixed;
         }
         th, td {
             border: 1px solid black;
-            padding: 8px;
-            text-align: left;
+            padding: 5px;
+            vertical-align: top;
+            height: 80px;
         }
-        th {
+        .day-column {
+            width: 10%;
+            font-weight: bold;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .time-header {
             background-color: #f2f2f2;
+            font-weight: bold;
+            text-align: center;
+            height: 30px;
+        }
+        .course-cell {
+            text-align: center;
+        }
+        .course-info {
+            padding: 3px;
+            border-radius: 3px;
+            margin-bottom: 5px;
+        }
+        .module-name {
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        .professor-name {
+            font-style: italic;
+            margin-bottom: 2px;
+        }
+        .room-info {
+            font-size: 12px;
+        }
+        .group-info {
+            font-size: 12px;
+            font-weight: bold;
+        }
+        /* Color codes for different course types */
+        .administration {
+            background-color: #e6e6fa;
+        }
+        .development {
+            background-color: #e0ffff;
+        }
+        .analysis {
+            background-color: #f0fff0;
+        }
+        .networks {
+            background-color: #fff0f5;
+        }
+        .systems {
+            background-color: #fffacd;
         }
     </style>
 </head>
 <body>
-    <h2>Generated Timetable</h2>
+    <div class="header">
+        <h2>Generated Timetable</h2>
+        <h3>Academic Year 2024-2025</h3>
+    </div>
+    
+    <div class="filters">
+        <label for="professorFilter">Professor:</label>
+        <select id="professorFilter">
+            <option value="">All</option>
+        </select>
+        
+        <label for="groupFilter">Group:</label>
+        <select id="groupFilter">
+            <option value="">All</option>
+            <option value="1">Group 1</option>
+            <option value="2">Group 2</option>
+            <option value="3">Group 3</option>
+        </select>
+
+        <label for="roomFilter">Salle:</label>
+        <select id="roomFilter">
+            <option value="">All</option>
+        </select>
+
+        <!-- Add Niveau Filter -->
+        <label for="niveauFilter">Niveau:</label>
+        <select id="niveauFilter">
+            <option value="">All</option>
+            <option value="1ère année">1ère année</option>
+            <option value="2ème année">2ème année</option>
+            <option value="LP">LP</option>
+        </select>
+
+        <!-- Add Semestre Filter -->
+        <label for="semestreFilter">Semestre:</label>
+        <select id="semestreFilter">
+            <option value="">All</option>
+            <option value="S1">Semestre 1</option>
+            <option value="S2">Semestre 2</option>
+            <option value="S3">Semestre 3</option>
+            <option value="S4">Semestre 4</option>
+            <option value="S5">Semestre 5</option>
+            <option value="S6">Semestre 6</option>
+        </select>
+        
+        <button onclick="applyFilters()">Apply Filters</button>
+    </div>
+    
     <table id="timetable">
         <thead>
             <tr>
-                <th>Day</th>
-                <th>Time</th>
-                <th>Course</th>
-                <th>Professor</th>
-                <th>Room</th>
+                <th></th>
+                <th class="time-header">08:30-10:20</th>
+                <th class="time-header">10:40-12:30</th>
+                <th class="time-header">14:30-16:20</th>
+                <th class="time-header">16:40-18:30</th>
             </tr>
         </thead>
         <tbody>
-            <!-- Timetable data will be inserted here dynamically -->
+            <tr>
+                <td class="day-column">Lundi</td>
+                <td id="monday-1" class="course-cell"></td>
+                <td id="monday-2" class="course-cell"></td>
+                <td id="monday-3" class="course-cell"></td>
+                <td id="monday-4" class="course-cell"></td>
+            </tr>
+            <tr>
+                <td class="day-column">Mardi</td>
+                <td id="tuesday-1" class="course-cell"></td>
+                <td id="tuesday-2" class="course-cell"></td>
+                <td id="tuesday-3" class="course-cell"></td>
+                <td id="tuesday-4" class="course-cell"></td>
+            </tr>
+            <tr>
+                <td class="day-column">Mercredi</td>
+                <td id="wednesday-1" class="course-cell"></td>
+                <td id="wednesday-2" class="course-cell"></td>
+                <td id="wednesday-3" class="course-cell"></td>
+                <td id="wednesday-4" class="course-cell"></td>
+            </tr>
+            <tr>
+                <td class="day-column">Jeudi</td>
+                <td id="thursday-1" class="course-cell"></td>
+                <td id="thursday-2" class="course-cell"></td>
+                <td id="thursday-3" class="course-cell"></td>
+                <td id="thursday-4" class="course-cell"></td>
+            </tr>
+            <tr>
+                <td class="day-column">Vendredi</td>
+                <td id="friday-1" class="course-cell"></td>
+                <td id="friday-2" class="course-cell"></td>
+                <td id="friday-3" class="course-cell"></td>
+                <td id="friday-4" class="course-cell"></td>
+            </tr>
+            <tr>
+                <td class="day-column">Samedi</td>
+                <td id="saturday-1" class="course-cell"></td>
+                <td id="saturday-2" class="course-cell"></td>
+                <td id="saturday-3" class="course-cell"></td>
+                <td id="saturday-4" class="course-cell"></td>
+            </tr>
         </tbody>
     </table>
 
     <script>
-        // Replace this with the actual JSON data from your Python script
-        const timetableData =[
+        // Replace this with the actual JSON data from your database
+        const timetableData = [
     {
-        "professor": "Baioumy",
+        "professor": "Baioumy None",
         "module": "Systèmes d’exploitation",
         "group": 1,
         "day": "Lundi",
-        "time": "08:30-10:30",
-        "room": "Salle TP"
+        "time": "08:30-10:20",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S2"
     },
     {
-        "professor": "Aouaj",
+        "professor": "Aouaj None",
         "module": "Analyse numérique",
         "group": 3,
         "day": "Mercredi",
-        "time": "08:30-10:30",
-        "room": "Mini-Amphi"
+        "time": "08:30-10:20",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S2"
     },
     {
-        "professor": "Maarouf",
+        "professor": "ALAOUI FDILI OTHMANE",
+        "module": "Systèmes d’exploitation",
+        "group": 4,
+        "day": "Lundi",
+        "time": "08:30-10:20",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "MOUNIR ILHAM",
+        "module": "Analyse numérique",
+        "group": 2,
+        "day": "Lundi",
+        "time": "08:30-10:20",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ARHID KHADIJA",
+        "module": "Systèmes d'information",
+        "group": 1,
+        "day": "Lundi",
+        "time": "14:30-16:20",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ALAOUI FDILI OTHMANE",
+        "module": "Systèmes d’exploitation",
+        "group": 1,
+        "day": "Lundi",
+        "time": "10:40-12:30",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ALAOUI FDILI OTHMANE",
+        "module": "Systèmes d’exploitation",
+        "group": 2,
+        "day": "Lundi",
+        "time": "10:40-12:30",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ALAOUI FDILI OTHMANE",
+        "module": "Systèmes d’exploitation",
+        "group": 2,
+        "day": "Lundi",
+        "time": "14:30-16:20",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ALAOUI FDILI OTHMANE",
+        "module": "Systèmes d’exploitation",
+        "group": 1,
+        "day": "Lundi",
+        "time": "16:40-18:30",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ALAOUI FDILI OTHMANE",
+        "module": "Systèmes d’exploitation",
+        "group": 1,
+        "day": "Mercredi",
+        "time": "08:30-10:20",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ALAOUI FDILI OTHMANE",
+        "module": "Systèmes d’exploitation",
+        "group": 1,
+        "day": "Mercredi",
+        "time": "10:40-12:30",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ALAOUI FDILI OTHMANE",
+        "module": "Systèmes d’exploitation",
+        "group": 3,
+        "day": "Lundi",
+        "time": "08:30-10:20",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "MOUNIR ILHAM",
+        "module": "Analyse numérique",
+        "group": 3,
+        "day": "Lundi",
+        "time": "10:40-12:30",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "Maarouf Hamid",
         "module": "Réseaux informatiques",
         "group": 3,
         "day": "Lundi",
-        "time": "08:30-10:30",
-        "room": "Salle TP"
+        "time": "14:30-16:20",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S2"
     },
     {
-        "professor": "Maarouf",
+        "professor": "Maarouf Hamid",
         "module": "Réseaux informatiques",
         "group": 1,
-        "day": "Lundi",
-        "time": "08:30-10:30",
-        "room": "Salle TP"
+        "day": "Mercredi",
+        "time": "14:30-16:20",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S2"
     },
     {
-        "professor": "Maarouf",
+        "professor": "Maarouf Hamid",
         "module": "Analyse numérique",
         "group": 1,
-        "day": "Lundi",
-        "time": "08:30-10:30",
-        "room": "Salle TP"
+        "day": "Mercredi",
+        "time": "16:40-18:30",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S2"
     },
     {
-        "professor": "hourri",
+        "professor": "ALAOUI FDILI OTHMANE",
+        "module": "Systèmes d’exploitation",
+        "group": 3,
+        "day": "Lundi",
+        "time": "16:40-18:30",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "hourri soufiane",
         "module": "Administration Réseau",
         "group": 2,
-        "day": "Lundi",
-        "time": "08:30-10:30",
-        "room": "Amphi"
+        "day": "Mercredi",
+        "time": "08:30-10:20",
+        "room": "Mini-Amphi",
+        "niveau": "2ème année",
+        "semestre": "S4"
     },
     {
-        "professor": "hourri",
+        "professor": "hourri soufiane",
         "module": "Administration Réseau",
         "group": 3,
-        "day": "Lundi",
-        "time": "08:30-10:30",
-        "room": "Amphi"
+        "day": "Mercredi",
+        "time": "10:40-12:30",
+        "room": "Mini-Amphi",
+        "niveau": "2ème année",
+        "semestre": "S4"
     },
     {
-        "professor": "hourri",
+        "professor": "hourri soufiane",
         "module": "Administration Réseau",
         "group": 3,
-        "day": "Lundi",
-        "time": "08:30-10:30",
-        "room": "Amphi"
+        "day": "Mercredi",
+        "time": "14:30-16:20",
+        "room": "Mini-Amphi",
+        "niveau": "2ème année",
+        "semestre": "S4"
     },
     {
-        "professor": "hourri",
-        "module": "Administration Réseau",
-        "group": 1,
-        "day": "Lundi",
-        "time": "08:30-10:30",
-        "room": "Amphi"
-    },
-    {
-        "professor": "hourri",
-        "module": "Développement web",
-        "group": 1,
-        "day": "Lundi",
-        "time": "08:30-10:30",
-        "room": "Salle TP"
-    },
-    {
-        "professor": "hourri",
-        "module": "Développement web",
+        "professor": "ARHID KHADIJA",
+        "module": "Architecture et programmation assembleur",
         "group": 2,
         "day": "Lundi",
-        "time": "08:30-10:30",
-        "room": "Salle TP"
+        "time": "16:40-18:30",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S1"
     },
     {
-        "professor": "hourri",
-        "module": "Développement web",
-        "group": 3,
+        "professor": "ARHID KHADIJA",
+        "module": "Architecture et programmation assembleur",
+        "group": 4,
         "day": "Lundi",
-        "time": "08:30-10:30",
-        "room": "Salle TP"
+        "time": "14:30-16:20",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S1"
     },
     {
-        "professor": "hourri",
-        "module": "Développement web",
-        "group": 1,
+        "professor": "ARHID KHADIJA",
+        "module": "Architecture et programmation assembleur",
+        "group": 4,
         "day": "Lundi",
-        "time": "08:30-10:30",
-        "room": "Amphi"
+        "time": "16:40-18:30",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S1"
     },
     {
-        "professor": "hourri",
+        "professor": "hourri soufiane",
         "module": "Développement web",
         "group": 2,
-        "day": "Lundi",
-        "time": "08:30-10:30",
-        "room": "Amphi"
+        "day": "Mercredi",
+        "time": "10:40-12:30",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S2"
     },
     {
-        "professor": "hourri",
+        "professor": "hourri soufiane",
         "module": "Développement web",
         "group": 3,
-        "day": "Lundi",
-        "time": "08:30-10:30",
-        "room": "Amphi"
+        "day": "Mercredi",
+        "time": "16:40-18:30",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S2"
     },
     {
-        "professor": "hourri",
+        "professor": "hourri soufiane",
         "module": "Développement web",
-        "group": 1,
+        "group": 2,
+        "day": "Mercredi",
+        "time": "14:30-16:20",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ELABDELLAOUI SAID",
+        "module": "Annalyse et conception orientées object",
+        "group": 4,
         "day": "Lundi",
-        "time": "08:30-10:30",
-        "room": "Salle TP"
+        "time": "10:40-12:30",
+        "room": "Salle TP",
+        "niveau": "2ème année",
+        "semestre": "S3"
     }
 ];
 
-        function loadTimetable() {
-            const tableBody = document.getElementById("timetable").getElementsByTagName("tbody")[0];
-            timetableData.forEach(entry => {
-                let row = tableBody.insertRow();
-                row.insertCell(0).textContent = entry.day;
-                row.insertCell(1).textContent = entry.time;
-                row.insertCell(2).textContent = entry.course;
-                row.insertCell(3).textContent = entry.professor;
-                row.insertCell(4).textContent = entry.room;
+        // Function to get CSS class based on module name
+        function getModuleClass(moduleName) {
+            const lowerModule = moduleName.toLowerCase();
+            if (lowerModule.includes('administration')) return 'administration';
+            if (lowerModule.includes('développement') || lowerModule.includes('web')) return 'development';
+            if (lowerModule.includes('analyse')) return 'analysis';
+            if (lowerModule.includes('réseau')) return 'networks';
+            if (lowerModule.includes('système')) return 'systems';
+            return '';
+        }
+
+        // Function to map day and time to cell ID
+        function getCellId(day, time) {
+            const dayMap = {
+                'Lundi': 'monday',
+                'Mardi': 'tuesday',
+                'Mercredi': 'wednesday',
+                'Jeudi': 'thursday',
+                'Vendredi': 'friday',
+                'Samedi': 'saturday'
+            };
+            
+            const timeMap = {
+                '08:30-10:20': '1',
+                '10:40-12:30': '2',
+                '14:30-16:20': '3',
+                '16:40-18:30': '4'
+            };
+            
+            return `${dayMap[day]}-${timeMap[time]}`;
+        }
+
+        // Function to populate the timetable with data
+        function populateTimetable(data) {
+            // Clear all cells first
+            document.querySelectorAll('.course-cell').forEach(cell => {
+                cell.innerHTML = '';
+            });
+
+            // Group courses by day and time
+            const coursesByCell = {};
+            
+            data.forEach(course => {
+                const cellId = getCellId(course.day, course.time);
+                if (!coursesByCell[cellId]) {
+                    coursesByCell[cellId] = [];
+                }
+                coursesByCell[cellId].push(course);
+            });
+            
+            // Add courses to cells
+            for (const [cellId, courses] of Object.entries(coursesByCell)) {
+                const cell = document.getElementById(cellId);
+                if (cell) {
+                    courses.forEach(course => {
+                        const courseElement = document.createElement('div');
+                        courseElement.className = `course-info ${getModuleClass(course.module)}`;
+                        
+                        courseElement.innerHTML = `
+                            <div class="module-name">${course.module}</div>
+                            <div class="professor-name">${course.professor}</div>
+                            <div class="group-info">Groupe ${course.group}</div>
+                            <div class="room-info">${course.room}</div>
+                        `;
+                        
+                        cell.appendChild(courseElement);
+                    });
+                }
+            }
+        }
+
+        // Function to populate professor filter dropdown
+        function populateProfessorFilter() {
+            const professorFilter = document.getElementById('professorFilter');
+            const professors = [...new Set(timetableData.map(entry => entry.professor))];
+            
+            professors.forEach(prof => {
+                let option = document.createElement('option');
+                option.value = prof;
+                option.textContent = prof;
+                professorFilter.appendChild(option);
             });
         }
+
+        // Function to populate room filter dropdown
+        function populateRoomFilter() {
+            const roomFilter = document.getElementById('roomFilter');
+            const rooms = [...new Set(timetableData.map(entry => entry.room))];
+
+            rooms.forEach(room => {
+                let option = document.createElement('option');
+                option.value = room;
+                option.textContent = room;
+                roomFilter.appendChild(option);
+            });
+        }
+
+        // Function to apply filters
+        function applyFilters() {
+            const professor = document.getElementById('professorFilter').value;
+            const group = document.getElementById('groupFilter').value;
+            const room = document.getElementById('roomFilter').value;
+            const niveau = document.getElementById('niveauFilter').value; // Get Niveau value
+            const semestre = document.getElementById('semestreFilter').value; // Get Semestre value
+
+            const filteredData = timetableData.filter(entry => 
+                (!professor || entry.professor === professor) &&
+                (!group || entry.group.toString() === group) &&
+                (!room || entry.room === room) &&
+                (!niveau || entry.niveau === niveau) && // Add Niveau filter
+                (!semestre || entry.semestre === semestre) // Add Semestre filter
+            );
+            
+            populateTimetable(filteredData);
+        }
         
-        loadTimetable();
+        // Initialize the page
+        populateProfessorFilter();
+        populateRoomFilter();
+        populateTimetable(timetableData);
     </script>
 </body>
 </html>
