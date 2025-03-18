@@ -5,152 +5,157 @@ import json
 # Step 1: Connect to MySQL Database
 db = mysql.connector.connect(
     host="localhost",
-    user="root",  # Change this to your MySQL username
-    password="",  # Change this to your MySQL password
-    database="dut"  # Change this to your actual database name
+    user="root", 
+    password="",  
+    database="dut" 
 )
 
-# Create a buffered cursor to avoid "Unread result found" errors
 cursor = db.cursor(dictionary=True, buffered=True)
 
 # Step 2: Fetch Data
 cursor.execute("SELECT * FROM professeurs")
-professors = cursor.fetchall()  # Fetch all results
+professors = cursor.fetchall()  
 
-# Fetch modules with semestre information
 cursor.execute("""
     SELECT m.id, m.intitule_module, m.niveau, s.numeroSemestre 
     FROM modules m
     JOIN semestres s ON m.id_semestre = s.id
 """)
-modules = cursor.fetchall()  # Fetch all results
+modules = cursor.fetchall()  
 
 cursor.execute("SELECT * FROM groupe_affectes")
-assignments = cursor.fetchall()  # Fetch all results
+assignments = cursor.fetchall()  
 
 cursor.execute("SELECT * FROM disponibilite_profs")
-availability = cursor.fetchall()  # Fetch all results
+availability = cursor.fetchall()  
 
-cursor.execute("SELECT * FROM salle_ests")  # Fetch room information
-rooms = cursor.fetchall()  # Fetch all results
+cursor.execute("SELECT * FROM salle_ests")  
+rooms = cursor.fetchall()  
 
-cursor.execute("SELECT * FROM salle_dispos")  # Fetch room availability data
-room_availabilities = cursor.fetchall()  # Fetch all results
+cursor.execute("SELECT * FROM salle_dispos")  
+room_availabilities = cursor.fetchall()  
 
-# Step 3: Organize Data into a Timetable
-timetable = []
+# Step 3: Define Constants
 days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"]
-time_slots = ["08:30-10:20", "10:40-12:30", "14:30-16:20", "16:40-18:30"]  # Updated time slots
+time_slots = ["08:30-10:20", "10:40-12:30", "14:30-16:20", "16:40-18:30"]
 
-# Step 4: Function to Check Professor Availability
-def is_professor_available(professor_id, day, time_slot):
-    # Split the time slot into start and end times
-    start_time, end_time = time_slot.split('-')
-    
-    # Determine if it's morning or afternoon
-    matin = 1 if "08:30" <= start_time <= "12:30" else 0
-    apres_midi = 1 if "14:30" <= start_time <= "18:30" else 0
+# Step 4: Define Genetic Algorithm Parameters
+POPULATION_SIZE = 50  # The number of timetables (solutions) in each generation.
+GENERATIONS = 200  # The number of times the population evolves.
+MUTATION_RATE = 0.1  # Probability of mutation
 
-    # Use a separate cursor for this query
-    with db.cursor(dictionary=True, buffered=True) as temp_cursor:
-        temp_cursor.execute(""" 
-            SELECT * FROM disponibilite_profs 
-            WHERE id_prof = %s AND jour = %s AND (matin = %s OR apres_midi = %s)
-        """, (professor_id, day, matin, apres_midi))
+# Step 5: Define the Chromosome Structure
+def create_random_timetable(assignments, professors, modules, rooms, days, time_slots):
+    timetable = []
+    for assign in assignments:
+        professor_id = assign["idProfesseur"]
+        module_id = assign["idModule"]
+        group_id = assign["numeroGroupe"]
 
-        result = temp_cursor.fetchone()  # Fetch the result
-        return result is not None
+        professor = next((p for p in professors if p["id"] == professor_id), None)
+        module = next((m for m in modules if m["id"] == module_id), None)
 
+        if professor and module:
+            day = random.choice(days)
+            time_slot = random.choice(time_slots)
+            room = random.choice(rooms)
+            timetable.append({
+                "professor": f"{professor['nom']} {professor['prenom']}",
+                "module": module["intitule_module"],
+                "group": group_id,
+                "day": day,
+                "time": time_slot,
+                "room": room["TypeSalle"],
+                "niveau": module["niveau"],
+                "semestre": module["numeroSemestre"]
+            })
+    return timetable
 
-# Step 5: Function to Check Room Availability
-def is_room_available(room_id, day, time_slot):
-    # Split the time slot into start and end times
-    start_time, end_time = time_slot.split('-')
-    
-    # Determine if it's morning or afternoon
-    matin = 1 if "08:30" <= start_time <= "12:30" else 0
-    apres_midi = 1 if "14:30" <= start_time <= "18:30" else 0
+# Step 6: Define the Fitness Function
+def fitness_function(timetable):
+    conflicts = 0
 
-    # Use a separate cursor for this query
-    with db.cursor(dictionary=True, buffered=True) as temp_cursor:
-        temp_cursor.execute("""
-            SELECT * FROM salle_dispos
-            WHERE numero = %s AND jour = %s AND (matin = %s OR apres_midi = %s)
-        """, (room_id, day, matin, apres_midi))
-
-        room_availability = temp_cursor.fetchone()  # Fetch the result
-        return room_availability is not None
-
-
-# Step 6: Function to Check if Professor is Already Assigned
-def is_professor_assigned(professor_id, day, time_slot, timetable):
+    # Check for professor conflicts
+    professor_assignments = {}
     for entry in timetable:
-        if entry["professor"] == professor_id and entry["day"] == day and entry["time"] == time_slot:
-            return True
-    return False
+        key = (entry["professor"], entry["day"], entry["time"])
+        if key in professor_assignments:
+            conflicts += 1
+        else:
+            professor_assignments[key] = True
 
-
-# Step 7: Function to Check if Room is Already Assigned
-def is_room_assigned(room_id, day, time_slot, timetable):
+    # Check for room conflicts
+    room_assignments = {}
     for entry in timetable:
-        if entry["room"] == room_id and entry["day"] == day and entry["time"] == time_slot:
-            return True
-    return False
+        key = (entry["room"], entry["day"], entry["time"])
+        if key in room_assignments:
+            conflicts += 1
+        else:
+            room_assignments[key] = True
 
-
-# Step 8: Function to Check if Group is Already Assigned
-def is_group_assigned(group_id, day, time_slot, timetable):
+    # Check for group conflicts
+    group_assignments = {}
     for entry in timetable:
-        if entry["group"] == group_id and entry["day"] == day and entry["time"] == time_slot:
-            return True
-    return False
+        key = (entry["group"], entry["day"], entry["time"])
+        if key in group_assignments:
+            conflicts += 1
+        else:
+            group_assignments[key] = True
 
+    # Fitness is inversely proportional to conflicts
+    return 1 / (1 + conflicts)
 
-# Step 9: Assign Timetable Entries
-for assign in assignments:
-    professor_id = assign["idProfesseur"]
-    module_id = assign["idModule"]
-    group_id = assign["numeroGroupe"]
+# Step 7: Define Selection, Crossover, and Mutation
+def selection(population, fitness_scores):
+    # Select the top 50% of the population
+    sorted_population = [x for _, x in sorted(zip(fitness_scores, population), key=lambda pair: pair[0], reverse=True)]
+    return sorted_population[:len(population) // 2]
 
-    professor = next((p for p in professors if p["id"] == professor_id), None)
-    module = next((m for m in modules if m["id"] == module_id), None)
+def crossover(parent1, parent2):
+    # Combine two timetables
+    child = parent1[:len(parent1) // 2] + parent2[len(parent2) // 2:]
+    return child
 
-    # Step 10: If Professor and Module Exist, Assign Timeslot, Day, and Room
-    if professor and module:
-        assigned = False
-        for day in days:
-            for time_slot in time_slots:
-                # Check if professor, room, and group are available and not already assigned
-                if (is_professor_available(professor_id, day, time_slot) and
-                   not is_professor_assigned(professor_id, day, time_slot, timetable) and
-                   not is_group_assigned(group_id, day, time_slot, timetable)):
+def mutation(timetable, professors, modules, rooms, days, time_slots):
+    # Randomly change some genes
+    for i in range(len(timetable)):
+        if random.random() < MUTATION_RATE:
+            timetable[i]["day"] = random.choice(days)
+            timetable[i]["time"] = random.choice(time_slots)
+            timetable[i]["room"] = random.choice(rooms)["TypeSalle"]
+    return timetable
 
-                    # Find available rooms
-                    available_rooms = [room for room in rooms if is_room_available(room["id"], day, time_slot) and
-                                      not is_room_assigned(room["id"], day, time_slot, timetable)]
+# Step 8: Initialize the Population
+population = [create_random_timetable(assignments, professors, modules, rooms, days, time_slots) for _ in range(POPULATION_SIZE)]
 
-                    if available_rooms:
-                        room = random.choice(available_rooms)
-                        timetable.append({
-                            "professor": f"{professor['nom']} {professor['prenom']}",  # Store professor name
-                            "module": module["intitule_module"],
-                            "group": group_id,
-                            "day": day,
-                            "time": time_slot,
-                            "room": room["TypeSalle"],
-                            "niveau": module["niveau"],  # Add niveau
-                            "semestre": module["numeroSemestre"]  # Add semestre
-                        })
-                        assigned = True
-                        break
-            if assigned:
-                break
+# Step 9: Run the Genetic Algorithm
+for generation in range(GENERATIONS):
+    # Evaluate fitness
+    fitness_scores = [fitness_function(timetable) for timetable in population]
 
-# Step 11: Save Timetable as JSON
-with open("timetable.json", "w", encoding="utf-8") as json_file:
-    json.dump(timetable, json_file, indent=4, ensure_ascii=False)
+    # Select the best timetables
+    selected_population = selection(population, fitness_scores)
 
-print("✅ Timetable saved as 'timetable.json'.")
+    # Create the next generation
+    next_population = []
+    while len(next_population) < POPULATION_SIZE:
+        parent1, parent2 = random.sample(selected_population, 2)
+        child = crossover(parent1, parent2)
+        child = mutation(child, professors, modules, rooms, days, time_slots)
+        next_population.append(child)
+
+    population = next_population
+
+    # Print the best fitness score in this generation
+    best_fitness = max(fitness_scores)
+    print(f"Generation {generation}: Best Fitness = {best_fitness}")
+
+# Step 10: Save the Best Timetable
+best_timetable = max(population, key=fitness_function)
+with open("best_timetable.json", "w", encoding="utf-8") as json_file:
+    json.dump(best_timetable, json_file, indent=4, ensure_ascii=False)
+
+print("✅ Best timetable saved as 'best_timetable.json'.")
 
 # Close connection
 cursor.close()

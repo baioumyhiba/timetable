@@ -1,0 +1,792 @@
+[
+    {
+        "professor": "Baioumy None",
+        "module": "Systèmes d’exploitation",
+        "group": 1,
+        "day": "Mercredi",
+        "time": "08:30-10:20",
+        "room": "Salle TD",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "Assaf None",
+        "module": "Réseaux informatiques",
+        "group": 2,
+        "day": "Jeudi",
+        "time": "10:40-12:30",
+        "room": "Salle TD",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "Aouaj None",
+        "module": "Analyse numérique",
+        "group": 3,
+        "day": "Vendredi",
+        "time": "14:30-16:20",
+        "room": "Salle TD",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ALAOUI FDILI OTHMANE",
+        "module": "Systèmes d’exploitation",
+        "group": 4,
+        "day": "Mardi",
+        "time": "10:40-12:30",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ESSALIH MOHAMED",
+        "module": "Réseaux informatiques",
+        "group": 3,
+        "day": "Vendredi",
+        "time": "08:30-10:20",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "MOUNIR ILHAM",
+        "module": "Analyse numérique",
+        "group": 2,
+        "day": "Mardi",
+        "time": "08:30-10:20",
+        "room": "Salle TD",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "CHEKRY ABDERRAHMAN",
+        "module": "Bases  de données",
+        "group": 1,
+        "day": "Lundi",
+        "time": "08:30-10:20",
+        "room": "Salle TD",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ARHID KHADIJA",
+        "module": "Systèmes d'information",
+        "group": 1,
+        "day": "Mardi",
+        "time": "14:30-16:20",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ALAOUI FDILI OTHMANE",
+        "module": "Systèmes d’exploitation",
+        "group": 1,
+        "day": "Lundi",
+        "time": "14:30-16:20",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ALAOUI FDILI OTHMANE",
+        "module": "Systèmes d’exploitation",
+        "group": 2,
+        "day": "Mardi",
+        "time": "16:40-18:30",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ALAOUI FDILI OTHMANE",
+        "module": "Systèmes d’exploitation",
+        "group": 2,
+        "day": "Mardi",
+        "time": "10:40-12:30",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ALAOUI FDILI OTHMANE",
+        "module": "Systèmes d’exploitation",
+        "group": 1,
+        "day": "Mercredi",
+        "time": "10:40-12:30",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ESSALIH MOHAMED",
+        "module": "Réseaux informatiques",
+        "group": 2,
+        "day": "Lundi",
+        "time": "10:40-12:30",
+        "room": "Salle TD",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ESSALIH MOHAMED",
+        "module": "Réseaux informatiques",
+        "group": 1,
+        "day": "Mercredi",
+        "time": "08:30-10:20",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "MOUNIR ILHAM",
+        "module": "Analyse numérique",
+        "group": 2,
+        "day": "Vendredi",
+        "time": "14:30-16:20",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "MOUNIR ILHAM",
+        "module": "Analyse numérique",
+        "group": 2,
+        "day": "Vendredi",
+        "time": "08:30-10:20",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ESSALIH MOHAMED",
+        "module": "Réseaux informatiques",
+        "group": 3,
+        "day": "Vendredi",
+        "time": "10:40-12:30",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ESSALIH MOHAMED",
+        "module": "Réseaux informatiques",
+        "group": 2,
+        "day": "Mercredi",
+        "time": "14:30-16:20",
+        "room": "Salle TD",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ESSALIH MOHAMED",
+        "module": "Réseaux informatiques",
+        "group": 2,
+        "day": "Jeudi",
+        "time": "16:40-18:30",
+        "room": "Salle TD",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ESSALIH MOHAMED",
+        "module": "Réseaux informatiques",
+        "group": 2,
+        "day": "Jeudi",
+        "time": "16:40-18:30",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ALAOUI FDILI OTHMANE",
+        "module": "Systèmes d’exploitation",
+        "group": 1,
+        "day": "Mardi",
+        "time": "08:30-10:20",
+        "room": "Salle 21",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ALAOUI FDILI OTHMANE",
+        "module": "Systèmes d’exploitation",
+        "group": 1,
+        "day": "Mercredi",
+        "time": "10:40-12:30",
+        "room": "Salle TD",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ALAOUI FDILI OTHMANE",
+        "module": "Systèmes d’exploitation",
+        "group": 1,
+        "day": "Mercredi",
+        "time": "08:30-10:20",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ALAOUI FDILI OTHMANE",
+        "module": "Systèmes d’exploitation",
+        "group": 3,
+        "day": "Jeudi",
+        "time": "14:30-16:20",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "MOUNIR ILHAM",
+        "module": "Analyse numérique",
+        "group": 3,
+        "day": "Lundi",
+        "time": "14:30-16:20",
+        "room": "Salle TD",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "MOUNIR ILHAM",
+        "module": "Analyse numérique",
+        "group": 3,
+        "day": "Vendredi",
+        "time": "14:30-16:20",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "Maarouf Hamid",
+        "module": "Réseaux informatiques",
+        "group": 3,
+        "day": "Mercredi",
+        "time": "10:40-12:30",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "Maarouf Hamid",
+        "module": "Réseaux informatiques",
+        "group": 1,
+        "day": "Jeudi",
+        "time": "14:30-16:20",
+        "room": "Salle TD",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "Maarouf Hamid",
+        "module": "Analyse numérique",
+        "group": 1,
+        "day": "Jeudi",
+        "time": "16:40-18:30",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "MOUNIR ILHAM",
+        "module": "Analyse numérique",
+        "group": 1,
+        "day": "Lundi",
+        "time": "16:40-18:30",
+        "room": "Salle TD",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ALAOUI FDILI OTHMANE",
+        "module": "Systèmes d’exploitation",
+        "group": 3,
+        "day": "Vendredi",
+        "time": "16:40-18:30",
+        "room": "Salle TD",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "hourri soufiane",
+        "module": "Administration Réseau",
+        "group": 2,
+        "day": "Vendredi",
+        "time": "08:30-10:20",
+        "room": "Mini-Amphi",
+        "niveau": "2ème année",
+        "semestre": "S4"
+    },
+    {
+        "professor": "hourri soufiane",
+        "module": "Administration Réseau",
+        "group": 3,
+        "day": "Jeudi",
+        "time": "16:40-18:30",
+        "room": "Salle TP",
+        "niveau": "2ème année",
+        "semestre": "S4"
+    },
+    {
+        "professor": "hourri soufiane",
+        "module": "Administration Réseau",
+        "group": 3,
+        "day": "Vendredi",
+        "time": "16:40-18:30",
+        "room": "Salle TD",
+        "niveau": "2ème année",
+        "semestre": "S4"
+    },
+    {
+        "professor": "CHEKRY ABDERRAHMAN",
+        "module": "algorithme",
+        "group": 3,
+        "day": "Mardi",
+        "time": "14:30-16:20",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "CHEKRY ABDERRAHMAN",
+        "module": "algorithme",
+        "group": 4,
+        "day": "Mardi",
+        "time": "16:40-18:30",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "CHEKRY ABDERRAHMAN",
+        "module": "algorithme",
+        "group": 2,
+        "day": "Vendredi",
+        "time": "14:30-16:20",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "ARHID KHADIJA",
+        "module": "Architecture et programmation assembleur",
+        "group": 1,
+        "day": "Mardi",
+        "time": "08:30-10:20",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "ARHID KHADIJA",
+        "module": "Architecture et programmation assembleur",
+        "group": 2,
+        "day": "Mercredi",
+        "time": "08:30-10:20",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "ARHID KHADIJA",
+        "module": "Architecture et programmation assembleur",
+        "group": 3,
+        "day": "Vendredi",
+        "time": "10:40-12:30",
+        "room": "Salle 21",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "ARHID KHADIJA",
+        "module": "Architecture et programmation assembleur",
+        "group": 4,
+        "day": "Jeudi",
+        "time": "16:40-18:30",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "ARHID KHADIJA",
+        "module": "Architecture et programmation assembleur",
+        "group": 1,
+        "day": "Mardi",
+        "time": "08:30-10:20",
+        "room": "Salle TD",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "ARHID KHADIJA",
+        "module": "Architecture et programmation assembleur",
+        "group": 2,
+        "day": "Jeudi",
+        "time": "16:40-18:30",
+        "room": "Salle TD",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "ARHID KHADIJA",
+        "module": "Architecture et programmation assembleur",
+        "group": 3,
+        "day": "Jeudi",
+        "time": "10:40-12:30",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "ARHID KHADIJA",
+        "module": "Architecture et programmation assembleur",
+        "group": 4,
+        "day": "Jeudi",
+        "time": "14:30-16:20",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "CHEKRY ABDERRAHMAN",
+        "module": "algorithme",
+        "group": 4,
+        "day": "Mardi",
+        "time": "14:30-16:20",
+        "room": "Salle TD",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "CHEKRY ABDERRAHMAN",
+        "module": "algorithme",
+        "group": 1,
+        "day": "Mardi",
+        "time": "08:30-10:20",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "CHEKRY ABDERRAHMAN",
+        "module": "algorithme",
+        "group": 1,
+        "day": "Mercredi",
+        "time": "08:30-10:20",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "CHEKRY ABDERRAHMAN",
+        "module": "algorithme",
+        "group": 2,
+        "day": "Mercredi",
+        "time": "16:40-18:30",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "CHEKRY ABDERRAHMAN",
+        "module": "algorithme",
+        "group": 3,
+        "day": "Mardi",
+        "time": "08:30-10:20",
+        "room": "Amphi",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "hourri soufiane",
+        "module": "Administration Réseau",
+        "group": 1,
+        "day": "Vendredi",
+        "time": "16:40-18:30",
+        "room": "Salle TP",
+        "niveau": "2ème année",
+        "semestre": "S4"
+    },
+    {
+        "professor": "CHEKRY ABDERRAHMAN",
+        "module": "Bases  de données",
+        "group": 4,
+        "day": "Lundi",
+        "time": "16:40-18:30",
+        "room": "Salle TD",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "CHEKRY ABDERRAHMAN",
+        "module": "algorithme",
+        "group": 1,
+        "day": "Jeudi",
+        "time": "16:40-18:30",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "BAKKAS JAMAL",
+        "module": "Structure de données et programmation C avance",
+        "group": 1,
+        "day": "Mardi",
+        "time": "08:30-10:20",
+        "room": "Salle TD",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "BAKKAS JAMAL",
+        "module": "Structure de données et programmation C avance",
+        "group": 2,
+        "day": "Jeudi",
+        "time": "10:40-12:30",
+        "room": "Salle TD",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "BAKKAS JAMAL",
+        "module": "Structure de données et programmation C avance",
+        "group": 3,
+        "day": "Lundi",
+        "time": "10:40-12:30",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "BAKKAS JAMAL",
+        "module": "Structure de données et programmation C avance",
+        "group": 4,
+        "day": "Lundi",
+        "time": "08:30-10:20",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "BAKKAS JAMAL",
+        "module": "Structure de données et programmation C avance",
+        "group": 1,
+        "day": "Lundi",
+        "time": "14:30-16:20",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "BAKKAS JAMAL",
+        "module": "Structure de données et programmation C avance",
+        "group": 2,
+        "day": "Vendredi",
+        "time": "10:40-12:30",
+        "room": "Salle 21",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "BAKKAS JAMAL",
+        "module": "Structure de données et programmation C avance",
+        "group": 3,
+        "day": "Mercredi",
+        "time": "16:40-18:30",
+        "room": "Amphi",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "BAKKAS JAMAL",
+        "module": "Structure de données et programmation C avance",
+        "group": 4,
+        "day": "Vendredi",
+        "time": "08:30-10:20",
+        "room": "Amphi",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "BAKKAS JAMAL",
+        "module": "Structure de données et programmation C avance",
+        "group": 1,
+        "day": "Mardi",
+        "time": "16:40-18:30",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "hourri soufiane",
+        "module": "Développement web",
+        "group": 1,
+        "day": "Mardi",
+        "time": "16:40-18:30",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "hourri soufiane",
+        "module": "Développement web",
+        "group": 2,
+        "day": "Mardi",
+        "time": "10:40-12:30",
+        "room": "Salle TD",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "hourri soufiane",
+        "module": "Développement web",
+        "group": 3,
+        "day": "Mercredi",
+        "time": "10:40-12:30",
+        "room": "Mini-Amphi",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "hourri soufiane",
+        "module": "Développement web",
+        "group": 1,
+        "day": "Lundi",
+        "time": "16:40-18:30",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "hourri soufiane",
+        "module": "Développement web",
+        "group": 2,
+        "day": "Vendredi",
+        "time": "16:40-18:30",
+        "room": "Salle TD",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "hourri soufiane",
+        "module": "Développement web",
+        "group": 3,
+        "day": "Mardi",
+        "time": "16:40-18:30",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "hourri soufiane",
+        "module": "Développement web",
+        "group": 1,
+        "day": "Vendredi",
+        "time": "08:30-10:20",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ALAOUI FDILI OTHMANE",
+        "module": "Systèmes d’exploitation",
+        "group": 2,
+        "day": "Mercredi",
+        "time": "16:40-18:30",
+        "room": "Salle TD",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ALAOUI FDILI OTHMANE",
+        "module": "Systèmes d’exploitation",
+        "group": 3,
+        "day": "Mercredi",
+        "time": "10:40-12:30",
+        "room": "Salle TD",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ALAOUI FDILI OTHMANE",
+        "module": "Systèmes d’exploitation",
+        "group": 3,
+        "day": "Lundi",
+        "time": "08:30-10:20",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "ALAOUI FDILI OTHMANE",
+        "module": "Systèmes d’exploitation",
+        "group": 1,
+        "day": "Mercredi",
+        "time": "10:40-12:30",
+        "room": "Salle TD",
+        "niveau": "1ère année",
+        "semestre": "S2"
+    },
+    {
+        "professor": "Mahfoudi abdel",
+        "module": "Anglais",
+        "group": 3,
+        "day": "Vendredi",
+        "time": "16:40-18:30",
+        "room": "Salle TP",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "Mahfoudi abdel",
+        "module": "Anglais",
+        "group": 4,
+        "day": "Mardi",
+        "time": "14:30-16:20",
+        "room": "Salle TD",
+        "niveau": "1ère année",
+        "semestre": "S1"
+    },
+    {
+        "professor": "ELABDELLAOUI SAID",
+        "module": "Annalyse et conception orientées object",
+        "group": 4,
+        "day": "Vendredi",
+        "time": "10:40-12:30",
+        "room": "Salle TP",
+        "niveau": "2ème année",
+        "semestre": "S3"
+    },
+    {
+        "professor": "MOUNIR ILHAM",
+        "module": "Bases  de données",
+        "group": 1,
+        "day": "Mardi",
+        "time": "08:30-10:20",
+        "room": "Salle TP",
+        "niveau": "2ème année",
+        "semestre": "S3"
+    },
+    {
+        "professor": "ALAOUI FDILI OTHMANE",
+        "module": "Réseau informatique  II",
+        "group": 2,
+        "day": "Mercredi",
+        "time": "14:30-16:20",
+        "room": "Mini-Amphi",
+        "niveau": "2ème année",
+        "semestre": "S3"
+    },
+    {
+        "professor": "ESSALIH MOHAMED",
+        "module": "système d'exploitation II",
+        "group": 4,
+        "day": "Mercredi",
+        "time": "14:30-16:20",
+        "room": "Mini-Amphi",
+        "niveau": "2ème année",
+        "semestre": "S3"
+    }
+]
